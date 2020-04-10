@@ -1,4 +1,5 @@
-import React from 'React';
+import React from 'react';
+import NavBar from '../NavBar.js';
 
 const MainContainer = () =>{
   return(

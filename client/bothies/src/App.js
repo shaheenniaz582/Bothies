@@ -5,11 +5,12 @@ import MainContainer from './containers/MainContainer'
 class App extends Component {
 
   render() {
-  return (
-    <div>
+    return (
+      <div>
       <MainContainer/>
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default App;
