@@ -1,5 +1,4 @@
 import React, {Fragment} from 'react';
-import NavBar from '../NavBar.js';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import MapContainer from './MapContainer'
 import ReviewContainer from './ReviewContainer'
@@ -30,7 +29,6 @@ class MainContainer extends React.Component {
     return(
       <Router>
        <Fragment>
-          <NavBar />
 
          <Switch>
 
