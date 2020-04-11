@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-class ReviewContainer extends Component{
+class HomeContainer extends Component{
   render(){
-    return(<p>Reviews</p>)
+    return(
+      <p>Home Container Here</p>
+    )
   }
 }
 
-export default ReviewContainer;
+export default HomeContainer;
