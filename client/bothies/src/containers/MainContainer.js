@@ -29,14 +29,19 @@ class MainContainer extends React.Component {
   render(){
     return(
       <Router>
-      <Fragment>
-      <NavBar />
-      <Switch>
-      <Route path="/" component={HomeContainer}/>
-      <Route path="/map" component={MapContainer}/>
-      <Route path="/reviews" component={ReviewContainer}/>
-      </Switch>
-      </Fragment>
+       <Fragment>
+          <NavBar />
+
+         <Switch>
+
+           <Route exact path="/" component={HomeContainer}/>
+
+           <Route exact path="/map" component={MapContainer}/>
+
+           <Route exact path="/reviews" component={ReviewContainer}/>
+
+         </Switch>
+       </Fragment>
       </Router>
     )
   }
