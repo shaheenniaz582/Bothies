@@ -3,15 +3,10 @@ import { render } from 'react-dom';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import Control from 'react-leaflet-control';
 
-
-
-
-const stamenTonerTiles = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-const stamenTonerAttr = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
-const mapCenter = [56.7008, -4.1897];
-const zoomLevel = 6.5;
-
-
+const tiles = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+const attr = 'Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+const mapCenter = [56.4907, -4.2026];
+const zoomLevel = 6.4;
 
 class MapContainer extends Component {
 
@@ -94,8 +89,8 @@ class MapContainer extends Component {
                     zoom={zoomLevel}
                 >
                     <TileLayer
-                        attribution={stamenTonerAttr}
-                        url={stamenTonerTiles}
+                        attribution={attr}
+                        url={tiles}
                     />
 
 
@@ -104,26 +99,26 @@ class MapContainer extends Component {
                     <Control position="topright">
                         <div
                             style={{
-                                backgroundColor: 'black',
+                                backgroundColor: 'transparent',
                                 padding: '5px',
                             }}
                         >
-                            <div style={{ marginLeft: '37px' }}>
+                            <div style={{ marginLeft: '0px' }}>
                                 <button onClick={this.handleUpPanClick}>
-                                    Pan up
+                                ⬆️
                                 </button>
                             </div>
                             <div>
                                 <button onClick={this.handleLeftPanClick}>
-                                    Pan left
+                                ⬅️
                                 </button>
                                 <button onClick={this.handleRightPanClick}>
-                                    Pan right
+                                ➡️
                                 </button>
                             </div>
-                            <div style={{ marginLeft: '30px' }}>
+                            <div style={{ marginLeft: '0px' }}>
                                 <button onClick={this.handleDownPanClick}>
-                                    Pan down
+                                ⬇️
                                 </button>
                             </div>
                         </div>
