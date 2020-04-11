@@ -10,10 +10,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-leaflet": "^2.6.3",
-<<<<<<< HEAD
-=======
     "react-leaflet-control": "^2.1.2",
->>>>>>> develop
     "react-scripts": "3.4.1"
   },
   "scripts": {
