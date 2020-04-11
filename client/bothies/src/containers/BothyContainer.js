@@ -1,4 +1,6 @@
 import React from 'react';
+import NavBar from '../NavBar.js';
+
 
 class BothyContainer extends React.Component {
   constructor(props){
@@ -26,7 +28,10 @@ class BothyContainer extends React.Component {
   render(){
     return(
       <div>
+      <NavBar/>
+
         <h2> bothy container </h2>
+
       </div>
     )
   }
