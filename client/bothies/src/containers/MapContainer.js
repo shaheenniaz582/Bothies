@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import Control from 'react-leaflet-control';
 
-const tiles = 'https://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png';
+const tiles = 'https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png';
 const attr = 'Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 const mapCenter = [56.4907, -4.2026];
 const zoomLevel = 7;
