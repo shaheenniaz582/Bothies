@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import Control from 'react-leaflet-control';
 
@@ -14,8 +13,10 @@ class MapContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
+          isLoaded: false,
         currentZoomLevel: zoomLevel,
-        trails: [],
+        hikes: [],
+        name: []
 
 
       };
@@ -23,13 +24,7 @@ class MapContainer extends Component {
         this.handleRightPanClick = this.handleRightPanClick.bind(this);
         this.handleLeftPanClick = this.handleLeftPanClick.bind(this);
         this.handleDownPanClick = this.handleDownPanClick.bind(this);
-        this.state.trails = this.trails;
     }
-
-
-
-
-
 
     componentDidMount() {
         const leafletMap = this.leafletMap.leafletElement;
@@ -37,14 +32,25 @@ class MapContainer extends Component {
             const updatedZoomLevel = leafletMap.getZoom();
             this.handleZoomLevelChange(updatedZoomLevel);
         });
-    }
-
-    componentDidMount(){
-      fetch(
-        "https://www.hikingproject.com/data/get-trails?lat=56.8198&lon=-5.1052&maxDistance=200&maxResults=100&key=200690005-4ce565fde2b3431d0b7b6f90cb2e272e"
-      )
-        .then(response => response.json())
-        .then(data => this.setState({ trails : data}))
+        fetch(
+          "https://www.hikingproject.com/data/get-trails?lat=56.8198&lon=-5.1052&maxDistance=200&maxResults=100&key=200690005-4ce565fde2b3431d0b7b6f90cb2e272e"
+        )
+          .then(response => response.json())
+          .then(
+          (result) => {
+            this.setState({
+              isLoaded: true,
+              hikes: result
+            });
+          },
+          // error handler
+          (error) => {
+            this.setState({
+              isLoaded: true,
+              error
+            });
+          }
+        )
     }
 
     handleZoomLevelChange(newZoomLevel) {
@@ -77,53 +83,48 @@ class MapContainer extends Component {
 
     render(){
 
-
-        window.console.log('this.state.currentZoomLevel ->', this.state.currentZoomLevel);
+        const {hikes} = this.state;
+        console.log(hikes.trails && hikes.trails[0].name)
 
         return (
             <div>
-              
-                <Map
-                    ref={m => { this.leafletMap = m; }}
-                    center={mapCenter}
-                    zoom={zoomLevel}
-                >
-                    <TileLayer
-                        attribution={attr}
-                        url={tiles}
-                    />
-
-
-
-
-                    <Control position="topright">
-                        <div
-                            style={{
-                                backgroundColor: 'transparent',
-                                padding: '5px',
-                            }}
-                        >
-                            <div style={{ marginLeft: '0px' }}>
-                                <button onClick={this.handleUpPanClick}>
-                                ⬆️
-                                </button>
-                            </div>
-                            <div>
-                                <button onClick={this.handleLeftPanClick}>
-                                ⬅️
-                                </button>
-                                <button onClick={this.handleRightPanClick}>
-                                ➡️
-                                </button>
-                            </div>
-                            <div style={{ marginLeft: '0px' }}>
-                                <button onClick={this.handleDownPanClick}>
-                                ⬇️
-                                </button>
-                            </div>
+            <Map
+                ref={m => { this.leafletMap = m; }}
+                center={mapCenter}
+                zoom={zoomLevel}
+            >
+                <TileLayer
+                    attribution={attr}
+                    url={tiles}
+                />
+                <Control position="topright">
+                    <div
+                        style={{
+                            backgroundColor: 'transparent',
+                            padding: '5px',
+                        }}
+                    >
+                        <div style={{ marginLeft: '0px' }}>
+                            <button onClick={this.handleUpPanClick}>
+                            <span role="img" aria-label="up">⬆️</span>
+                            </button>
                         </div>
-                    </Control>
-                </Map>
+                        <div>
+                            <button onClick={this.handleLeftPanClick}>
+                            <span role="img" aria-label="left">⬅️</span>
+                            </button>
+                            <button onClick={this.handleRightPanClick}>
+                            <span role="img" aria-label="right">➡️</span>
+                            </button>
+                        </div>
+                        <div style={{ marginLeft: '0px' }}>
+                            <button onClick={this.handleDownPanClick}>
+                            <span role="img" aria-label="down">⬇️</span>
+                            </button>
+                        </div>
+                    </div>
+                </Control>
+            </Map>
             </div>
         );
     }

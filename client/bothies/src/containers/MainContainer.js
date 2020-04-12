@@ -3,7 +3,6 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import MapContainer from './MapContainer'
 import ReviewContainer from './ReviewContainer'
 import HomeContainer from './HomeContainer'
-import BothyContainer from './BothyContainer'
 
 
 class MainContainer extends React.Component {
