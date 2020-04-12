@@ -12,8 +12,10 @@ export const StyledBurger = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
+  outline: 0;
   padding: 0;
   z-index: 10;
+
   span {
     width: 2rem;
     height: 0.25rem;
