@@ -1,77 +1,66 @@
 package com.codeclan.example.bothies.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
-@Table ( name ="reviews")
+@Table( name= "reviews")
+
 public class Review {
 
-    // Instance Variables
+    // Instance variables
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column( name = "visitor_first_name")
-    private String visitorFirstName;
-    @Column(name = "visitor_last_name")
-    private String visitorLastName;
-    @Column( name = "comments")
+
+    @Column(name = "comments")
     private String comments;
+
     @Column(name = "rating")
-    private int Rating;
+    private int rating;
+
+    @JsonIgnoreProperties(value = "reviews")
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
 
     // Constructor
-
-    public Review(String visitorFirstName, String visitorLastName, String comments, int rating) {
-        this.visitorFirstName = visitorFirstName;
-        this.visitorLastName = visitorLastName;
+    public Review(String comments, int rating, Account account) {
         this.comments = comments;
-        Rating = rating;
-    } // ends constructor
-
-
+        this.rating = rating;
+        this.account = account;
+    }
+    // ends constructor
     // Default Constructor
-    public Review(){}
 
-    // Getter & Setter
+    public Review() {
+        }
 
+    //Getters and Setters
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getVisitorFirstName() {
-        return visitorFirstName;
-    }
-
-    public void setVisitorFirstName(String visitorFirstName) {
-        this.visitorFirstName = visitorFirstName;
-    }
-
-    public String getVisitorLastName() {
-        return visitorLastName;
-    }
-
-    public void setVisitorLastName(String visitorLastName) {
-        this.visitorLastName = visitorLastName;
-    }
-
-    public String getComments() {
-        return comments;
-    }
-
-    public void setComments(String comments) {
-        this.comments = comments;
-    }
-
-    public int getRating() {
-        return Rating;
-    }
-
-    public void setRating(int rating) {
-        Rating = rating;
-    }
-}
+        public Long getId () {
+            return id;
+        }
+        public void setId (Long id){
+            this.id = id;
+        }
+        public String getComments () {
+            return comments;
+        }
+        public void setComments (String comments){
+            this.comments = comments;
+        }
+        public int getRating () {
+            return rating;
+        }
+        public void setRating ( int rating){
+            this.rating = rating;
+        }
+        public Account getAccount () {
+            return account;
+        }
+        public void setAccount (Account account){
+            this.account = account;
+        }
+    }//ends class
