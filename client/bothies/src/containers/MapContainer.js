@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import Control from 'react-leaflet-control';
+import L from 'leaflet';
 
 const tiles = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const attr = 'Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 const mapCenter = [56.4907, -4.2026];
 const zoomLevel = 6.4;
+
 
 class MapContainer extends Component {
 
@@ -15,7 +17,7 @@ class MapContainer extends Component {
         super(props);
         this.state = {
         currentZoomLevel: zoomLevel,
-        trails: [],
+        trails: []
 
 
       };
@@ -23,7 +25,7 @@ class MapContainer extends Component {
         this.handleRightPanClick = this.handleRightPanClick.bind(this);
         this.handleLeftPanClick = this.handleLeftPanClick.bind(this);
         this.handleDownPanClick = this.handleDownPanClick.bind(this);
-        this.state.trails = this.trails;
+
     }
 
 
@@ -45,6 +47,7 @@ class MapContainer extends Component {
       )
         .then(response => response.json())
         .then(data => this.setState({ trails : data}))
+        .catch(err=>console.err)
     }
 
     handleZoomLevelChange(newZoomLevel) {
@@ -77,21 +80,28 @@ class MapContainer extends Component {
 
     render(){
 
+console.log(this.state.trails.trails && this.state.trails.trails[0].name)
 
-        window.console.log('this.state.currentZoomLevel ->', this.state.currentZoomLevel);
 
         return (
+
             <div>
-              
+
                 <Map
+
                     ref={m => { this.leafletMap = m; }}
                     center={mapCenter}
                     zoom={zoomLevel}
                 >
+
+
                     <TileLayer
                         attribution={attr}
                         url={tiles}
                     />
+
+
+
 
 
 
