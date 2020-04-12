@@ -13,7 +13,7 @@ class MapContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          isLoaded: false,
+        isLoaded: false,
         currentZoomLevel: zoomLevel,
         hikes: [],
 

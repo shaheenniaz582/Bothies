@@ -19,7 +19,7 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args){
         Review review1 = new Review("Shaheen", "Niaz"," .............",5);
         reviewRepository.save(review1);
-        Review review2 = new Review("Harley", "Bramwell"," ......Ecellent.......",4);
+        Review review2 = new Review("Harley", "Bramwell"," ......Excellent.......",4);
         reviewRepository.save(review2);
         Review review3 = new Review("John", "Boyle"," .....Good........",3);
         reviewRepository.save(review3);
