@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import Control from 'react-leaflet-control';
 
-const tiles = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+const tiles = 'https://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png';
 const attr = 'Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 const mapCenter = [56.4907, -4.2026];
-const zoomLevel = 6.4;
+const zoomLevel = 7;
 
 class MapContainer extends Component {
 
@@ -16,7 +16,6 @@ class MapContainer extends Component {
           isLoaded: false,
         currentZoomLevel: zoomLevel,
         hikes: [],
-        name: []
 
 
       };
