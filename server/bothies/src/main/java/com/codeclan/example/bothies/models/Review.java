@@ -1,25 +1,26 @@
-package models;
+package com.codeclan.example.bothies.models;
 
 import javax.persistence.*;
 
 @Entity
-@Table( name= "reviews")
+@Table ( name ="reviews")
 public class Review {
 
-    // Instance variables
+    // Instance Variables
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long id;
     @Column( name = "visitor_first_name")
     private String visitorFirstName;
-    @Column( name = "visitor_last_name")
+    @Column(name = "visitor_last_name")
     private String visitorLastName;
     @Column( name = "comments")
     private String comments;
-    @Column( name = "rating")
+    @Column(name = "rating")
     private int Rating;
 
     // Constructor
+
     public Review(String visitorFirstName, String visitorLastName, String comments, int rating) {
         this.visitorFirstName = visitorFirstName;
         this.visitorLastName = visitorLastName;
@@ -27,9 +28,12 @@ public class Review {
         Rating = rating;
     } // ends constructor
 
-    public Review(){} // Default Constructor
 
-    //Getters and Setters
+    // Default Constructor
+    public Review(){}
+
+    // Getter & Setter
+
 
     public Long getId() {
         return id;
@@ -70,4 +74,4 @@ public class Review {
     public void setRating(int rating) {
         Rating = rating;
     }
-} //ends class
+}
