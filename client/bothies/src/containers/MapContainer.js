@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import '../components/Menu/Menu.js';
 import { render } from 'react-dom';
 import { Map, Marker, TileLayer, Popup } from 'react-leaflet';
 
@@ -92,7 +92,9 @@ class MapContainer extends Component {
                       trail.longitude]}>
                       <Popup>
                       {trail.name}
-
+                      <a href="/reviews" >
+                        Reviews
+                        </a>
                       </Popup>
                   </Marker>
                 ))}
