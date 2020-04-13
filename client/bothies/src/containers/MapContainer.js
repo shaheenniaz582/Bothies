@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import Control from 'react-leaflet-control';
-import L from 'leaflet';
-
 const tiles = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const attr = 'Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 const mapCenter = [56.4907, -4.2026];
@@ -39,10 +37,8 @@ class MapContainer extends Component {
             const updatedZoomLevel = leafletMap.getZoom();
             this.handleZoomLevelChange(updatedZoomLevel);
         });
-    }
 
-    componentDidMount(){
-      fetch(
+    fetch(
         "https://www.hikingproject.com/data/get-trails?lat=56.8198&lon=-5.1052&maxDistance=200&maxResults=100&key=200690005-4ce565fde2b3431d0b7b6f90cb2e272e"
       )
         .then(response => response.json())
@@ -80,29 +76,28 @@ class MapContainer extends Component {
 
     render(){
 
-console.log(this.state.trails.trails && this.state.trails.trails[0].name)
 
 
-        return (
+      return (
+        <div>
+          <Map
+            ref={m => { this.leafletMap = m; }}
+            center={mapCenter}
+            zoom={zoomLevel}
+          >
+            <TileLayer
+              attribution={attr}
+              url={tiles}
+            />
+                {this.state.trails.trails && this.state.trails.trails.map((trail, index)=>(
+                  <Marker
+                    key={index}
+                    position={[
+                      trail.latitude,
+                      trail.longitude]}>
+                  </Marker>
 
-            <div>
-
-                <Map
-
-                    ref={m => { this.leafletMap = m; }}
-                    center={mapCenter}
-                    zoom={zoomLevel}
-                >
-
-
-                    <TileLayer
-                        attribution={attr}
-                        url={tiles}
-                    />
-
-
-
-
+                ))}
 
 
 
