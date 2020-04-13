@@ -3,20 +3,14 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import MapContainer from './MapContainer'
 import ReviewContainer from './ReviewContainer'
 import HomeContainer from './HomeContainer'
-<<<<<<< HEAD
 
-=======
->>>>>>> develop
 
 
 class MainContainer extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-<<<<<<< HEAD
 
-=======
->>>>>>> develop
     };
   }
 

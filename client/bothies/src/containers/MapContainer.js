@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
+
 import { render } from 'react-dom';
 import { Map, Marker, TileLayer, Popup } from 'react-leaflet';
-=======
-import { Map, Marker, TileLayer } from 'react-leaflet';
->>>>>>> develop
+
 import Control from 'react-leaflet-control';
 import '../App.css';
 
@@ -20,14 +18,7 @@ class MapContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-<<<<<<< HEAD
-
-        trails: []
-=======
-        isLoaded: false,
-        currentZoomLevel: zoomLevel,
-        hikes: [],
->>>>>>> develop
+          trails: []
 
 
       };
@@ -35,10 +26,7 @@ class MapContainer extends Component {
         this.handleRightPanClick = this.handleRightPanClick.bind(this);
         this.handleLeftPanClick = this.handleLeftPanClick.bind(this);
         this.handleDownPanClick = this.handleDownPanClick.bind(this);
-<<<<<<< HEAD
 
-=======
->>>>>>> develop
     }
 
     componentDidMount() {
@@ -47,7 +35,6 @@ class MapContainer extends Component {
             const updatedZoomLevel = leafletMap.getZoom();
             this.handleZoomLevelChange(updatedZoomLevel);
         });
-<<<<<<< HEAD
 
     fetch(
         "https://www.hikingproject.com/data/get-trails?lat=56.8198&lon=-5.1052&maxDistance=200&maxResults=100&key=200690005-4ce565fde2b3431d0b7b6f90cb2e272e"
@@ -55,27 +42,6 @@ class MapContainer extends Component {
         .then(response => response.json())
         .then(data => this.setState({ trails : data}))
         .catch(err=>console.err)
-=======
-        fetch(
-          "https://www.hikingproject.com/data/get-trails?lat=56.8198&lon=-5.1052&maxDistance=200&maxResults=100&key=200690005-4ce565fde2b3431d0b7b6f90cb2e272e"
-        )
-          .then(response => response.json())
-          .then(
-          (result) => {
-            this.setState({
-              isLoaded: true,
-              hikes: result
-            });
-          },
-          // error handler
-          (error) => {
-            this.setState({
-              isLoaded: true,
-              error
-            });
-          }
-        )
->>>>>>> develop
     }
 
     handleZoomLevelChange(newZoomLevel) {
@@ -107,10 +73,6 @@ class MapContainer extends Component {
     }
 
     render(){
-
-<<<<<<< HEAD
-
-
       return (
         <div>
           <Map
@@ -130,83 +92,35 @@ class MapContainer extends Component {
                       trail.longitude]}>
                       <Popup>
                       {trail.name}
-                      
+
                       </Popup>
                   </Marker>
-
                 ))}
-
-
-
-                    <Control position="topright">
-                        <div
-                            style={{
-                                backgroundColor: 'transparent',
-                                padding: '5px',
-                            }}
-                        >
-                            <div style={{ marginLeft: '0px' }}>
-                                <button onClick={this.handleUpPanClick}>
-                                ⬆️
-                                </button>
-                            </div>
-                            <div>
-                                <button onClick={this.handleLeftPanClick}>
-                                ⬅️
-                                </button>
-                                <button onClick={this.handleRightPanClick}>
-                                ➡️
-                                </button>
-                            </div>
-                            <div style={{ marginLeft: '0px' }}>
-                                <button onClick={this.handleDownPanClick}>
-                                ⬇️
-                                </button>
-                            </div>
-=======
-        const {hikes} = this.state;
-        console.log(hikes.trails && hikes.trails[0].name)
-
-        return (
-            <div>
-            <Map
-                ref={m => { this.leafletMap = m; }}
-                center={mapCenter}
-                zoom={zoomLevel}
-            >
-                <TileLayer
-                    attribution={attr}
-                    url={tiles}
-                />
-                <Control position="topright">
-                    <div
-                        style={{
-                            backgroundColor: 'transparent',
-                            padding: '5px',
-                        }}
-                    >
-                        <div style={{ marginLeft: '0px' }}>
-                            <button onClick={this.handleUpPanClick}>
-                            <span role="img" aria-label="up">⬆️</span>
-                            </button>
-                        </div>
-                        <div>
-                            <button onClick={this.handleLeftPanClick}>
-                            <span role="img" aria-label="left">⬅️</span>
-                            </button>
-                            <button onClick={this.handleRightPanClick}>
-                            <span role="img" aria-label="right">➡️</span>
-                            </button>
-                        </div>
-                        <div style={{ marginLeft: '0px' }}>
-                            <button onClick={this.handleDownPanClick}>
-                            <span role="img" aria-label="down">⬇️</span>
-                            </button>
->>>>>>> develop
-                        </div>
-                    </div>
+              <Control position="topright">
+                  <div style={{
+                    backgroundColor: 'transparent',
+                    padding: '5px'}}>
+                  </div>
+                  <div style={{ marginLeft: '0px' }}>
+                    <button onClick={this.handleUpPanClick}>
+                      ⬆️
+                    </button>
+                  </div>
+                  <div>
+                    <button onClick={this.handleLeftPanClick}>
+                      ⬅️
+                    </button>
+                    <button onClick={this.handleRightPanClick}>
+                      ➡️
+                    </button>
+                  </div>
+                  <div style={{ marginLeft: '0px' }}>
+                    <button onClick={this.handleDownPanClick}>
+                      ⬇️
+                    </button>
+                  </div>
                 </Control>
-            </Map>
+              </Map>
             </div>
         );
     }
