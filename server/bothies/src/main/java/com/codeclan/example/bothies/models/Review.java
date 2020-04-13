@@ -14,6 +14,9 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "trail_id")
+    private Long trailId;
+
     @Column(name = "comments")
     private String comments;
 
@@ -23,13 +26,13 @@ public class Review {
     @JsonIgnoreProperties(value = "reviews")
     @ManyToOne
     @JoinColumn(name = "account_id")
-    private Account account;
+    private User user;
 
     // Constructor
-    public Review(String comments, int rating, Account account) {
+    public Review(String comments, int rating, User user) {
         this.comments = comments;
         this.rating = rating;
-        this.account = account;
+        this.user = user;
     }
     // ends constructor
     // Default Constructor
@@ -39,28 +42,46 @@ public class Review {
 
     //Getters and Setters
 
-        public Long getId () {
+
+    public Long getTrailId() {
+        return trailId;
+    }
+
+    public void setTrailId(Long trailId) {
+        this.trailId = trailId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Long getId () {
             return id;
         }
+
         public void setId (Long id){
             this.id = id;
         }
+
         public String getComments () {
             return comments;
         }
+
         public void setComments (String comments){
             this.comments = comments;
         }
+
         public int getRating () {
             return rating;
         }
+
         public void setRating ( int rating){
             this.rating = rating;
         }
-        public Account getAccount () {
-            return account;
-        }
-        public void setAccount (Account account){
-            this.account = account;
-        }
-    }//ends class
+    }
+
+    //ends class
