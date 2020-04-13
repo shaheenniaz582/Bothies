@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="accounts")
+@Table(name="users")
 
 public class User {
 
@@ -24,15 +24,15 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @JsonIgnoreProperties(value="accounts")
-    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
-    private List<Review> reviews;
+//    @JsonIgnoreProperties(value="users")
+//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+//    private List<Review> reviews;
 
     public User(String username, String email, String password, Review review){
         this.username = username;
         this.email = email;
         this.password = password;
-        this.reviews = new ArrayList<Review>();
+//        this.reviews = new ArrayList<Review>();
     }
 
     public User(){}
@@ -67,11 +67,11 @@ public class User {
         this.password = password;
     }
 
-    public List<Review> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(List<Review> reviews) {
-        this.reviews = reviews;
-    }
+//    public List<Review> getReviews() {
+//        return reviews;
+//    }
+//
+//    public void setReviews(List<Review> reviews) {
+//        this.reviews = reviews;
+//    }
 }

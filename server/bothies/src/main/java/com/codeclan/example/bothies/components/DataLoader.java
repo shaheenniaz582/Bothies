@@ -10,19 +10,21 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DataLoader implements ApplicationRunner {
+
+
     @Autowired
     ReviewRepository reviewRepository;
 
-    public DataLoader(){
 
-    }
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
 
-    public void run(ApplicationArguments args){
-        Review review1 = new Review("good enough", 5, 1);
+
+        Review review1 = new Review("good", 5);
         reviewRepository.save(review1);
-
-
-
-        User user1 = new User("Harley", "Hello@gmail.com", "Password1");
     }
 }
+
+
+
+
