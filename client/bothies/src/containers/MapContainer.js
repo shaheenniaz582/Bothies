@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { Map, Marker, TileLayer } from 'react-leaflet';
+import { Map, Marker, TileLayer, Popup } from 'react-leaflet';
 import Control from 'react-leaflet-control';
+import '../App.css';
+
 const tiles = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const attr = 'Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 const mapCenter = [56.4907, -4.2026];
@@ -14,7 +16,7 @@ class MapContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-        currentZoomLevel: zoomLevel,
+
         trails: []
 
 
@@ -95,6 +97,10 @@ class MapContainer extends Component {
                     position={[
                       trail.latitude,
                       trail.longitude]}>
+                      <Popup>
+                      {trail.name}
+                      
+                      </Popup>
                   </Marker>
 
                 ))}
