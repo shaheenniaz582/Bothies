@@ -1,6 +1,5 @@
-import React, { Component, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import MainContainer from './containers/MainContainer'
-import MapContainer from './containers/MapContainer'
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from './global';
 import { theme } from './theme';

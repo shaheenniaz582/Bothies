@@ -12,6 +12,7 @@ export const StyledMenu = styled.nav`
   position: absolute;
   top: 0;
   left: 0;
+  outline: 0;
   transition: transform 0.3s ease-in-out;
   @media (max-width: ${({ theme }) => theme.mobile}) {
       width: 100%;
@@ -19,6 +20,7 @@ export const StyledMenu = styled.nav`
   a {
     font-size: 2rem;
     text-transform: uppercase;
+    outline: 0;
     padding: 2rem 0;
     font-weight: bold;
     letter-spacing: 0.5rem;
