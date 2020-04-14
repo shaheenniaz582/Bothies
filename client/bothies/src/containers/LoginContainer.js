@@ -1,14 +1,26 @@
 import React, {Component} from 'react';
+import Request from '../helpers/Request';
 
 class LoginContainer extends Component{
   constructor(props){
     super(props);
     this.state = {
-      user: []
+      user: null,
+      selectedUser: []
     };
     this.handleLogIn=this.handleSubmit.bind(this);
     this.openForm=this.openForm.bind(this);
     this.closeForm=this.closeForm.bind(this);
+  }
+
+  componentDidMount(){
+    const request = new Request();
+    request.get('/api/users')
+    .then((data) => {
+      this.setState({
+        user: data
+      })
+    })
   }
 
     openForm() {
@@ -19,8 +31,12 @@ class LoginContainer extends Component{
     document.getElementById("loginForm").style.display = "none";
   }
 
-  handleSubmit(){
-    //match details with user in db and if they correspond push that user to this.state.user
+  handleSubmit(event){
+    if(event.email && event.password === this.state.user.username && this.state.user.password){
+      //let them in
+    } else{
+      //details are wrong
+    }
   }
 
 

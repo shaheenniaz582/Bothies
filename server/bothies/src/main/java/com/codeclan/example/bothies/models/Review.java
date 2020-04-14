@@ -48,11 +48,7 @@ public class Review {
     public void setTrailId(Long trailId) {
         this.trailId = trailId;
     }
-<<<<<<< HEAD
 
-=======
-//
->>>>>>> 30e4b231bc9d0cbc46f67bf6b6f6117ecf81dc6f
 //    public User getUser() {
 //        return user;
 //    }

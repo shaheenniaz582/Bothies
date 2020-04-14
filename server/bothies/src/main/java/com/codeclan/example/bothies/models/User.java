@@ -24,17 +24,12 @@ public class User {
     @Column(name = "password")
     private String password;
 
-<<<<<<< HEAD
-    @JsonIgnoreProperties(value="users")
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<Review> reviews;
-=======
+
 //    @JsonIgnoreProperties(value="users")
 //    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 //    private List<Review> reviews;
->>>>>>> 30e4b231bc9d0cbc46f67bf6b6f6117ecf81dc6f
 
-    public User(String username, String email, String password, Review review){
+    public User(String username, String email, String password){
         this.username = username;
         this.email = email;
         this.password = password;
@@ -42,6 +37,7 @@ public class User {
     }
 
     public User(){}
+
     public Long getId() {
         return id;
     }

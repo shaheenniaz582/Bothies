@@ -4,6 +4,9 @@ import LoginContainer from "./LoginContainer";
 
 class ReviewContainer extends Component{
   render(){
+  //   if(!this.state.user){
+  //   return null
+  // }
     return(
       <div>
       <CommentBox/>
