@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
+import CommentBox from "./CommentBox";
 
 class ReviewContainer extends Component{
   render(){
-    return(<p>Reviews</p>)
+    return(<CommentBox/>)
   }
 }
 
