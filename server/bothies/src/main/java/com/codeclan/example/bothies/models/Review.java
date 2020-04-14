@@ -1,7 +1,5 @@
 package com.codeclan.example.bothies.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 
 @Entity
@@ -23,16 +21,16 @@ public class Review {
     @Column(name = "rating")
     private int rating;
 
-    @JsonIgnoreProperties(value = "reviews")
-    @ManyToOne
-    @JoinColumn(name = "account_id")
-    private User user;
+//    @JsonIgnoreProperties(value = "reviews")
+//    @ManyToOne
+//    @JoinColumn(name = "account_id")
+//    private User user;
 
     // Constructor
-    public Review(String comments, int rating, User user) {
+    public Review(String comments, int rating) {
         this.comments = comments;
         this.rating = rating;
-        this.user = user;
+//        this.user = user;
     }
     // ends constructor
     // Default Constructor
@@ -51,13 +49,13 @@ public class Review {
         this.trailId = trailId;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public Long getId () {
             return id;
