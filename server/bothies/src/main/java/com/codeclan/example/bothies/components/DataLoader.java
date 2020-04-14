@@ -18,8 +18,13 @@ public class DataLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+<<<<<<< HEAD
+
+=======
+>>>>>>> feature/reviewbox
 
 
+<<<<<<< HEAD
     public void run(ApplicationArguments args){
         Review review1 = new Review(" .............",5);
         reviewRepository.save(review1);
@@ -29,5 +34,13 @@ public class DataLoader implements ApplicationRunner {
         reviewRepository.save(review3);
         Review review4 = new Review(" .....ok........",2);
         reviewRepository.save(review4);
+=======
+        Review review1 = new Review("good", 5);
+        reviewRepository.save(review1);
+>>>>>>> 30e4b231bc9d0cbc46f67bf6b6f6117ecf81dc6f
     }
 }
+
+
+
+
