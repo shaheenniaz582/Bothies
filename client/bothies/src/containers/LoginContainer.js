@@ -8,14 +8,14 @@ class LoginContainer extends Component{
       user: null,
       selectedUser: []
     };
-    this.handleLogIn=this.handleSubmit.bind(this);
+    this.handleSubmit=this.handleSubmit.bind(this);
     this.openForm=this.openForm.bind(this);
     this.closeForm=this.closeForm.bind(this);
   }
 
   componentDidMount(){
     const request = new Request();
-    request.get('/api/users')
+    request.get('/users')
     .then((data) => {
       this.setState({
         user: data
@@ -32,10 +32,11 @@ class LoginContainer extends Component{
   }
 
   handleSubmit(event){
-    if(event.email && event.password === this.state.user.username && this.state.user.password){
-      //let them in
+    event.preventDefault();
+    if(event.target.email.value === this.state.user[0].email && event.target.psw.value === this.state.user[0].password){
+      this.state.user = this.state.selectedUser;
     } else{
-      //details are wrong
+      console.log("Wrong login");
     }
   }
 
@@ -44,21 +45,21 @@ class LoginContainer extends Component{
     return(
 
       <div>
-      <button class="open-button" onClick={this.openForm}>Open Form</button>
+      <button className="open-button" onClick={this.openForm}>Open Form</button>
 
-      <div class="form-popup" id="loginForm">
+      <div className="form-popup" id="loginForm">
 
-      <form onSubmit={this.handleSubmit} class="form-container">
+      <form onSubmit={this.handleSubmit} className="form-container">
       <h1>Login</h1>
 
-      <label for="email"><b>Email</b></label>
+      <label htmlFor="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Email" name="email" required/>
 
-      <label for="psw"><b>Password</b></label>
+      <label htmlFor="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required/>
 
-      <button type="submit" class="btn">Login</button>
-      <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+      <button type="submit" className="btn">Login</button>
+      <button type="submit" className="btn cancel" onClick="closeForm()">Close</button>
       </form>
       </div>
       </div>
