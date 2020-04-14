@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-
+import {Link} from 'react-router-dom';
+import '../components/Menu/Menu.js';
 import { render } from 'react-dom';
 import { Map, Marker, TileLayer, Popup } from 'react-leaflet';
-
 import Control from 'react-leaflet-control';
 import '../App.css';
+import MainContainer from './MainContainer';
 
 const tiles = 'https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png';
 const attr = 'Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
@@ -18,7 +19,8 @@ class MapContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          trails: []
+          trails: [],
+          selectedTrailId: ""
 
 
       };
@@ -26,6 +28,7 @@ class MapContainer extends Component {
         this.handleRightPanClick = this.handleRightPanClick.bind(this);
         this.handleLeftPanClick = this.handleLeftPanClick.bind(this);
         this.handleDownPanClick = this.handleDownPanClick.bind(this);
+        this.handleTrailSelected = this.handleTrailSelected.bind(this);
 
     }
 
@@ -40,8 +43,16 @@ class MapContainer extends Component {
         "https://www.hikingproject.com/data/get-trails?lat=56.8198&lon=-5.1052&maxDistance=200&maxResults=100&key=200690005-4ce565fde2b3431d0b7b6f90cb2e272e"
       )
         .then(response => response.json())
-        .then(data => this.setState({ trails : data}))
+        .then(data => {
+
+          this.setState({ trails : data})
+          this.props.trailsFetched(data);
+        })
         .catch(err=>console.err)
+    }
+
+    handleTrailSelected(trailId){
+      this.setState({selectedTrailId: trailId});
     }
 
     handleZoomLevelChange(newZoomLevel) {
@@ -73,9 +84,13 @@ class MapContainer extends Component {
     }
 
     render(){
+
+
+
       return (
+
         <div>
-          <Map
+          <Map 
             ref={m => { this.leafletMap = m; }}
             center={mapCenter}
             zoom={zoomLevel}
@@ -92,6 +107,7 @@ class MapContainer extends Component {
                       trail.longitude]}>
                       <Popup>
                       {trail.name}
+                      <Link to={`/trail/${trail.id}`}> Trail Details</Link>
 
                       </Popup>
                   </Marker>
@@ -101,24 +117,8 @@ class MapContainer extends Component {
                     backgroundColor: 'transparent',
                     padding: '5px'}}>
                   </div>
-                  <div style={{ marginLeft: '0px' }}>
-                    <button onClick={this.handleUpPanClick}>
-                      ⬆️
-                    </button>
-                  </div>
-                  <div>
-                    <button onClick={this.handleLeftPanClick}>
-                      ⬅️
-                    </button>
-                    <button onClick={this.handleRightPanClick}>
-                      ➡️
-                    </button>
-                  </div>
-                  <div style={{ marginLeft: '0px' }}>
-                    <button onClick={this.handleDownPanClick}>
-                      ⬇️
-                    </button>
-                  </div>
+
+
                 </Control>
               </Map>
             </div>
