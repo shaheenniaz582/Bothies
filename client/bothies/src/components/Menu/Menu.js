@@ -17,10 +17,6 @@ const Menu = ({ open, ...props }) => {
         <span role="img" aria-label = "map" aria-hidden="true">🗺</span>
         Map
         </a>
-      <a href="/reviews" tabIndex={tabIndex}>
-        <span role="img" aria-label = "star" aria-hidden="true">⭐️</span>
-        Reviews
-        </a>
     </StyledMenu>
   )
 }

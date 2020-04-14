@@ -48,7 +48,7 @@ a {
 }
 
 .rating:not(:checked) > label {
-    float:right;
+    float:center;
     width:1.4em;
     padding:0 .1em;
     overflow:hidden;

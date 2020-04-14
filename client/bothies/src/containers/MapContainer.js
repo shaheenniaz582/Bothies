@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import '../components/Menu/Menu.js';
-import { render } from 'react-dom';
 import { Map, Marker, TileLayer, Popup } from 'react-leaflet';
 import Control from 'react-leaflet-control';
 import '../App.css';
-import MainContainer from './MainContainer';
 
 const tiles = 'https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png';
 const attr = 'Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
@@ -90,7 +88,7 @@ class MapContainer extends Component {
       return (
 
         <div>
-          <Map 
+          <Map
             ref={m => { this.leafletMap = m; }}
             center={mapCenter}
             zoom={zoomLevel}
@@ -107,8 +105,7 @@ class MapContainer extends Component {
                       trail.longitude]}>
                       <Popup>
                       {trail.name}
-                      <Link to={`/trail/${trail.id}`}> Trail Details</Link>
-
+                      <Link to={`/trail/${trail.id}`}><br/>Trail Details</Link>
                       </Popup>
                   </Marker>
                 ))}

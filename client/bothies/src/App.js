@@ -1,4 +1,4 @@
-import React, { useState, useRef, Router, Link, Route } from 'react';
+import React, { useState, useRef} from 'react';
 import MainContainer from './containers/MainContainer'
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from './global';
@@ -6,7 +6,6 @@ import { theme } from './theme';
 import { useOnClickOutside } from './hooks';
 import { Burger, Menu } from './components';
 import FocusLock from 'react-focus-lock';
-import TrailDetail from './components/TrailDetail';
 
 
 function App() {
