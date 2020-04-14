@@ -1,6 +1,7 @@
 import React from 'react';
 
 const TrailDetail = (props) => {
+  
   if(!props.trail) return null;
   return (
     <div>

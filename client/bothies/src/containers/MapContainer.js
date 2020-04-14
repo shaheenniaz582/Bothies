@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../components/Menu/Menu.js';
 import { render } from 'react-dom';
 import { Map, Marker, TileLayer, Popup } from 'react-leaflet';
-
 import Control from 'react-leaflet-control';
 import '../App.css';
 
@@ -74,6 +73,7 @@ class MapContainer extends Component {
 
     render(){
       return (
+
         <div>
           <Map
             ref={m => { this.leafletMap = m; }}
@@ -92,9 +92,8 @@ class MapContainer extends Component {
                       trail.longitude]}>
                       <Popup>
                       {trail.name}
-                      <a href="/reviews" >
-                        Reviews
-                        </a>
+                      <a href={trail.id}> Trail Details</a>
+
                       </Popup>
                   </Marker>
                 ))}
