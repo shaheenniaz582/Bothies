@@ -51,7 +51,7 @@ class MainContainer extends React.Component {
              const trail = this.state.trails.find((trail) => {
                return trail.id == props.match.params.id
              })
-             debugger
+
 
              return <TrailDetailContainer trail = {trail}/>
            } }/>

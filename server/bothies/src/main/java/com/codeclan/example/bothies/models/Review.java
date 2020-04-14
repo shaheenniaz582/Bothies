@@ -13,7 +13,7 @@ public class Review {
     private Long id;
 
     @Column(name = "trail_id")
-    private Long trailId;
+    private int trailId;
 
     @Column(name = "comments")
     private String comments;
@@ -27,10 +27,10 @@ public class Review {
 //    private User user;
 
     // Constructor
-    public Review(String comments, int rating) {
+    public Review(String comments, int rating, int trailId) {
         this.comments = comments;
         this.rating = rating;
-//        this.user = user;
+        this.trailId = trailId;
     }
     // ends constructor
     // Default Constructor
@@ -41,11 +41,11 @@ public class Review {
     //Getters and Setters
 
 
-    public Long getTrailId() {
+    public int getTrailId() {
         return trailId;
     }
 
-    public void setTrailId(Long trailId) {
+    public void setTrailId(int trailId) {
         this.trailId = trailId;
     }
 
