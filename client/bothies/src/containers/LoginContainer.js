@@ -45,7 +45,7 @@ class LoginContainer extends Component{
     return(
 
       <div>
-      <button className="open-button" onClick={this.openForm}>Open Form</button>
+      <button className="open-button" onClick={this.openForm}>Please Login</button>
 
       <div className="form-popup" id="loginForm">
 

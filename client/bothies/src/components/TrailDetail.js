@@ -6,6 +6,7 @@ const TrailDetail = (props) => {
   return (
     <div className="trail_details">
       <h1>{props.trail.name}</h1>
+      <h3>{props.trail.location}</h3>
       <h4>Difficulty: {props.trail.difficulty}</h4>
       <h5>{props.trail.summary}</h5>
 

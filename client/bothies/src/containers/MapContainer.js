@@ -103,8 +103,9 @@ class MapContainer extends Component {
                     position={[
                       trail.latitude,
                       trail.longitude]}>
-                      <Popup>
+                      <Popup className="popup">
                       {trail.name}
+
                       <Link to={`/trail/${trail.id}`}><br/>Trail Details</Link>
                       </Popup>
                   </Marker>
