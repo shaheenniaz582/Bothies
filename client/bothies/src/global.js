@@ -11,8 +11,12 @@ export const GlobalStyles = createGlobalStyle
   }
   body {
     align-items: center;
-    background: #adcceb;
-    color: #EFFFFA;
+    
+    background-image: url('https://images.pexels.com/photos/39391/landscape-nature-mountains-road-39391.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background-size: cover;
+
+    background-repeat: no-repeat;
+    color: #D5DAD2;
     display: flex;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     height: 100vh;
