@@ -47,7 +47,7 @@ class CommentForm extends Component {
 
     const review = {
       author: author,
-      text: text,
+      comments: text,
       rating: rating,
       trailId: this.props.trailId
     };
@@ -57,7 +57,11 @@ class CommentForm extends Component {
     })
 
     // update the list of comments in CommentBox
-    this.props.onCommentSubmit(review);
+    this.props.onCommentSubmit({
+      author: author,
+      text: text,
+      rating: rating
+    });
 
     // reset the form to empty values
     this.setState({
