@@ -153,3 +153,9 @@
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
+
+
+.comment-box {
+  opacity: 0.3;
+  pointer-events: none;
+}
