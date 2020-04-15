@@ -35,6 +35,11 @@ class LoginContainer extends Component{
     event.preventDefault();
     if(event.target.email.value === this.state.user[0].email && event.target.psw.value === this.state.user[0].password){
       this.state.user = this.state.selectedUser;
+      document.getElementById("commentBox").style.opacity = 1;
+      document.getElementById("commentBox").style.pointerEvents = "auto";
+      document.getElementById("loginForm").style.display = "none";
+
+
     } else{
       console.log("Wrong login");
     }
@@ -59,7 +64,7 @@ class LoginContainer extends Component{
       <input type="password" placeholder="Enter Password" name="psw" required/>
 
       <button type="submit" className="btn">Login</button>
-      <button type="submit" className="btn cancel" onClick="closeForm()">Close</button>
+      <button type="submit" className="btn cancel" onClick={this.closeForm}>Close</button>
       </form>
       </div>
       </div>
