@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Request from '../../helpers/Request.js'
 
 class CommentForm extends Component {
   constructor(props) {
@@ -7,18 +8,23 @@ class CommentForm extends Component {
     this.state = {
       author: '',
       text: '',
+      trailId: '',
       rating: 0
     };
 
-    this.handleAuthorChange = this.handleAuthorChange.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleRatingChange = this.handleRatingChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleAuthorChange(event) {
-    this.setState({ author: event.target.value });
-  }
+//   handlePost(review){
+//     debugger
+//   //   review["id"] = this.props.trailId;
+//   //   const request = new Request();
+//   //   request.post('/reviews', review).then(() => {
+//   //     window.location = '/map'
+//   // })
+// }
 
   handleTextChange(event) {
     this.setState({ text: event.target.value });
@@ -30,7 +36,7 @@ class CommentForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const author = this.state.author.trim();
+    const author = this.props.user.username.trim();
     const text = this.state.text.trim();
     const rating = this.state.rating;
 
@@ -39,12 +45,19 @@ class CommentForm extends Component {
       return;
     }
 
-    // update the list of comments in CommentBox
-    this.props.onCommentSubmit({
+    const review = {
       author: author,
       text: text,
-      rating: rating
-    });
+      rating: rating,
+      trailId: this.props.trailId
+    };
+    const request = new Request();
+    request.post('/reviews', review).then(() => {
+      // window.location = '/map'
+    })
+
+    // update the list of comments in CommentBox
+    this.props.onCommentSubmit(review);
 
     // reset the form to empty values
     this.setState({
@@ -58,10 +71,6 @@ class CommentForm extends Component {
     return (
       console.log(this.state.rating),
       <form className="comment-form" onSubmit={ this.handleSubmit }>
-      <input type="text"
-      placeholder="Your Name"
-      value={this.state.author}
-      onChange={this.handleAuthorChange} />
 
       <input type="text"
       placeholder="Say something..."
@@ -77,7 +86,7 @@ class CommentForm extends Component {
       <input type="radio" id="star1" name="rating" value="1" onChange={this.handleRatingChange}/><label htmlFor="star1" title="Very Poor"></label>
       </fieldset>
 
-      <input type="submit" value="Post"/>
+      <input type="submit" onClick={this.handlePost} value="Post"/>
       </form>
     );
   }

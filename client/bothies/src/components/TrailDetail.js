@@ -8,6 +8,7 @@ const TrailDetail = (props) => {
       <h1>{props.trail.name}</h1>
       <h4>Difficulty: {props.trail.difficulty}</h4>
       <h5>{props.trail.summary}</h5>
+      <p id="trailId">{props.trail.id}</p>
 
     </div>
   )

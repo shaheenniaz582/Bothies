@@ -22,11 +22,6 @@ class CommentBox extends Component {
         this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
     }
 
-// if logged in = true, display = clickable and viewable,
-//else reviewbox is shaded and non-clickable
-
-
-
     handleCommentSubmit(submittedComment) {
         submittedComment.id = Date.now();
 
@@ -40,7 +35,7 @@ class CommentBox extends Component {
         return (
             <div className="comment-box" id="commentBox">
                 <h2>Add Comment/Review</h2>
-                <CommentForm onCommentSubmit={this.handleCommentSubmit}/>
+                <CommentForm onCommentSubmit={this.handleCommentSubmit} trailId={this.props.trail.id} user = {this.props.loggedInUser}/>
                 <h2>Comments</h2>
                 <CommentList comments={this.state.comments} />
             </div>

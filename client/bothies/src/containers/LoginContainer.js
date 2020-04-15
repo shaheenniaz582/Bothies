@@ -34,12 +34,11 @@ class LoginContainer extends Component{
   handleSubmit(event){
     event.preventDefault();
     if(event.target.email.value === this.state.user[0].email && event.target.psw.value === this.state.user[0].password){
-      this.state.user = this.state.selectedUser;
+      // this.setState({user: this.state.selectedUser});
+      this.props.userLoggedIn(this.state.user[0])
       document.getElementById("commentBox").style.opacity = 1;
       document.getElementById("commentBox").style.pointerEvents = "auto";
       document.getElementById("loginForm").style.display = "none";
-
-
     } else{
       console.log("Wrong login");
     }

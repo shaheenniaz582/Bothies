@@ -20,8 +20,10 @@ public class DataLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args){
-        User user1= new User("Harley", "harleybramwell97@gmail.com", "password");
+        User user1= new User("Harley", "hb@gmail.com", "password");
+        User user2= new User("John", "jb@gmail.com", "password");
         userRepository.save(user1);
+        userRepository.save(user2);
 
         Review review1 = new Review("good", 5, 7051953);
         reviewRepository.save(review1);
